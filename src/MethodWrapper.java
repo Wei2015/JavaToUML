@@ -16,6 +16,15 @@ public class MethodWrapper {
         this.parameters = parameters;
     }
 
+    public String getMethodName() {
+        return methodName;
+    }
+
+
+
+
+
+
     public String toString() {
         String result = "+" + methodName + "(";
         for (String s : parameters) {

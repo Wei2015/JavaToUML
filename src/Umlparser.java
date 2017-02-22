@@ -9,9 +9,7 @@ public class Umlparser {
 
         Reader newDir = new Reader(args[0]);
         String result = newDir.readDirectory();
-
-
-
+        System.out.println(result);
 
 
     }

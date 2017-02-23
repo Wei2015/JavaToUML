@@ -10,6 +10,7 @@ import com.github.javaparser.ast.Modifier;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.*;
+import com.github.javaparser.ast.type.ClassOrInterfaceType;
 
 
 public class Reader {
@@ -81,21 +82,30 @@ public class Reader {
                 isInterface = true;
             }
             className = type.getNameAsString();
+
             //add implement or extend to relationships
-/*
-            if (((ClassOrInterfaceDeclaration)type).getExtends() != null) {
-                String extendClass = ((ClassOrInterfaceDeclaration)type).getExtendedTypes(0).getNameAsString();
-                if (classList.contains(extendClass)) {
-                    relationShips.add(extendClass + "<|--" +className + "\n");
+
+            if (!isInterface) {
+               //add inheritance relationship
+                List<ClassOrInterfaceType> extendedTypes = ((ClassOrInterfaceDeclaration) type).getExtendedTypes();
+
+                for (ClassOrInterfaceType t : extendedTypes) {
+                    String extendedClass = t.getName().getIdentifier();
+                    if (classList.contains(extendedClass)) {
+                        relationShips.add(extendedClass + "<|--" + className + "\n");
+                    }
                 }
-            } else if (((ClassOrInterfaceDeclaration)type).getImplementedTypes(0) != null) {
-                String implementInterface = ((ClassOrInterfaceDeclaration)type).getImplementedTypes(0).getNameAsString();
-                if (classList.contains((implementInterface))) {
-                    relationShips.add(implementInterface + "<|.." + implementInterface +"\n");
+                //add implement interface relationship
+                List<ClassOrInterfaceType> implementedTypes = ((ClassOrInterfaceDeclaration) type).getImplementedTypes();
+
+                for (ClassOrInterfaceType i : implementedTypes) {
+                    String implementInterface = i.getName().getIdentifier();
+                    if (classList.contains(implementInterface)) {
+                        relationShips.add(implementInterface + "<|.." + className + "\n");
+                    }
                 }
             }
-*/
-
+            
             ArrayList<AttributeWrapper> fields = new ArrayList<>();
             ArrayList<MethodWrapper> methods = new ArrayList<>();
             //

@@ -1,5 +1,5 @@
 /**
- * Created by weiyao on 2/21/17.
+ * One object of this class wrap the information of a method. 
  */
 import java.util.ArrayList;
 public class MethodWrapper {
@@ -21,17 +21,13 @@ public class MethodWrapper {
     }
 
 
-
-
-
-
     public String toString() {
         String result = "+" + methodName + "(";
         for (String s : parameters) {
             result += s;
         }
 
-        result += "): " + returnType +"\n";
+        result += "):" + returnType +"\n";
         return result;
     }
 }

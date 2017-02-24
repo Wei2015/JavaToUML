@@ -18,8 +18,10 @@ public class TestWriter {
         Writer.draw(test1, "/Users/weiyao/Documents/SJSU SE/2017 Spring/CMPE202/JavaToUML/testCases/test1.svg");
 
         String test2 = "@startuml\n" +
-                "interface A1\n" +
-                "interface A2\n" +
+                "interface A1 {\n" +
+                "}\n" +
+                "interface A2 {\n" +
+                "}\n" +
                 "P <|-- B1\n" +
                 "A1 <|.. B1\n" +
                 "P <|-- B2\n" +

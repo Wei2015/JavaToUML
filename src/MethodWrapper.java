@@ -1,5 +1,5 @@
 /**
- * One object of this class wrap the information of a method. 
+ * One object of this class wrap the information of a method.
  */
 import java.util.ArrayList;
 public class MethodWrapper {

@@ -16,6 +16,10 @@ public class Reader {
     private ArrayList<String> classList;
     private ArrayList<String> interfaceList;
 
+    //create containers to store relationship, methods, attributes and constructors information.
+    private Set<RelationWrapper> relationShips = new HashSet<>();
+
+
     public Reader() {
         classList = new ArrayList<>();
         interfaceList = new ArrayList<>();
@@ -47,6 +51,12 @@ public class Reader {
         for (TypeDeclaration type : types) {
             parseType(type, result);
         }
+
+
+        for (RelationWrapper s : relationShips) {
+            result.append(s.toString());
+        }
+
 
         //convert StringBuilder to String for return
         result.insert(0, "@startuml\n");
@@ -89,15 +99,14 @@ public class Reader {
 
         String className = type.getNameAsString();
 
-        Set<RelationWrapper> relationShips = new HashSet<>();
+
+        ArrayList<AttributeWrapper> fields = new ArrayList<>();
+        ArrayList<MethodWrapper> methods = new ArrayList<>();
+        ArrayList<ConstructorWrapper> constructors = new ArrayList<>();
 
         //add implement or extend to relationships
         addImplementOrExtend(type, className, relationShips);
 
-        //create containers to store methods, attributes and constructors information.
-        ArrayList<AttributeWrapper> fields = new ArrayList<>();
-        ArrayList<MethodWrapper> methods = new ArrayList<>();
-        ArrayList<ConstructorWrapper> constructors = new ArrayList<>();
 
         //iterating members
         NodeList<BodyDeclaration> members = type.getMembers();
@@ -114,13 +123,13 @@ public class Reader {
 
                 //add constructor information to constructor List
             } else if (m instanceof ConstructorDeclaration && ((ConstructorDeclaration) m).isPublic()) {
-                retriveConstructorInfo((ConstructorDeclaration) m, className, constructors, relationShips);
+                retrieveConstructorInfo((ConstructorDeclaration) m, className, constructors, relationShips);
             }
         }
 
-        result.append(extractInfo(relationShips, className, constructors, fields, methods));
+        result.append(extractInfo(className,constructors,fields,methods));
 
-        }
+    }
 
 
 
@@ -190,15 +199,21 @@ public class Reader {
         for (VariableDeclarator v : variables) {
             String fieldType = v.getType().toString(); //variable type
             String varParameterType = ""; //variable parameter type
+
+
             if (fieldType.contains("<") && fieldType.contains(">")) {
                 varParameterType = fieldType.substring(fieldType.indexOf("<") + 1, fieldType.indexOf(">"));
             }
             if (classList.contains(fieldType)) {
-                relationShips.add(new RelationWrapper(fieldType, className, "association"));
+                if (v.getType().getArrayLevel() > 0) {
+                    relationShips.add(new RelationWrapper(fieldType, className, "ASSOCIATION"));
+                } else {
+                    relationShips.add(new RelationWrapper(fieldType, className, "association"));
+                }
             } else if (classList.contains(varParameterType) || interfaceList.contains(varParameterType)) {
-                relationShips.add(new RelationWrapper(varParameterType, className, "association"));
+                relationShips.add(new RelationWrapper(varParameterType, className, "ASSOCIATION"));
             } else {
-                String fieldName = v.getNameAsString();
+                String fieldName = v.getNameAsString(); //variable name
                 if (isPublic || isPrivate)
                     fields.add(new AttributeWrapper(isPublic, fieldName, fieldType));
             }
@@ -206,12 +221,12 @@ public class Reader {
     }
 
 
-    private void retriveConstructorInfo(ConstructorDeclaration m, String className, ArrayList<ConstructorWrapper> constructors,
+    private void retrieveConstructorInfo(ConstructorDeclaration m, String className, ArrayList<ConstructorWrapper> constructors,
                                         Set<RelationWrapper> relationShips) {
-        String constructorName = ((ConstructorDeclaration) m).getNameAsString();
+        String constructorName =  m.getNameAsString();
         ArrayList<String> parameters = new ArrayList<>();
 
-        for (Parameter p : ((ConstructorDeclaration) m).getParameters()) {
+        for (Parameter p : m.getParameters()) {
             String parameterType = p.getType().toString();
             if (interfaceList.contains(parameterType)) {
                 relationShips.add(new RelationWrapper(parameterType, className, "dependency"));
@@ -223,15 +238,11 @@ public class Reader {
     }
 
 
-    private StringBuilder extractInfo(Set<RelationWrapper> relationShips, String className,
-                                      ArrayList<ConstructorWrapper> constructors,
-                                      ArrayList<AttributeWrapper> fields,
-                                      ArrayList<MethodWrapper> methods) {
+    private StringBuilder extractInfo(String className, ArrayList<ConstructorWrapper> constructors,
+                                      ArrayList<AttributeWrapper> fields, ArrayList<MethodWrapper> methods) {
         //format class information into result
         StringBuilder result = new StringBuilder();
-        for (RelationWrapper s : relationShips) {
-            result.append(s.toString());
-        }
+
 
         //display interface or class
         if (interfaceList.contains(className)) {

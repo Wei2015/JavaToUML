@@ -10,10 +10,13 @@ public class RelationWrapper {
 
     private String relation;
 
-    public RelationWrapper (String left, String right, String relation) {
-        leftClass = left;
-        rightClass = right;
+
+
+    public RelationWrapper (String leftClass, String rightClass, String relation) {
+        this.leftClass = leftClass;
+        this.rightClass = rightClass;
         this.relation = relation;
+
     }
 
 
@@ -32,6 +35,8 @@ public class RelationWrapper {
             case "association":
                 result += "--";
                 break;
+            case "ASSOCIATION":
+                result += "\"*\"--";
         }
         result += rightClass + "\n";
         return result;
@@ -41,9 +46,17 @@ public class RelationWrapper {
 
         try {
             RelationWrapper newOne = (RelationWrapper)newWrapper;
-            return (this.leftClass.equals(newOne.leftClass)
-                && this.rightClass.equals(newOne.rightClass)
-                && this.relation.equals(newOne.relation));
+            String newThisRelation = this.relation.toLowerCase();
+            String newThatRelation = newOne.relation.toLowerCase();
+
+            boolean result = this.leftClass.equals(newOne.leftClass) && this.rightClass.equals(newOne.rightClass) &&
+                                newThisRelation.equals(newThatRelation)
+                        || this.leftClass.equals(newOne.rightClass) && this.rightClass.equals(newOne.leftClass) &&
+                            newThisRelation.equals(newThatRelation);
+
+
+            return result;
+
         } catch (ClassCastException e) {
             System.out.println(e.toString());
             return false;
@@ -51,8 +64,9 @@ public class RelationWrapper {
     }
 @Override
     public int hashCode () {
-        return this.leftClass.hashCode() + this.rightClass.hashCode()
-                + this.relation.hashCode();
+
+        String newRelation = this.relation.toLowerCase();
+        return this.leftClass.hashCode() + this.rightClass.hashCode() + newRelation.hashCode();
 
 }
 }

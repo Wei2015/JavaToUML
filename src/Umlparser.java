@@ -11,7 +11,7 @@ public class Umlparser {
         String result = newDir.readDirectory(args[0]);
         System.out.println(result);
 
-        Writer.draw(result, "/Users/weiyao/Documents/SJSU SE/2017 Spring/CMPE202/JavaToUML/testCases/test.svg");
+        Writer.draw(result, args[1]);
 
 
     }

@@ -1,7 +1,7 @@
 
 import java.util.HashSet;
 /**
- * This is test class for Relation class functionality. 
+ * This is test class for Relation class functionality.
  */
 public class TestRelation {
 

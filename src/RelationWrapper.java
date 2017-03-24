@@ -24,19 +24,19 @@ public class RelationWrapper {
         String result = leftClass;
         switch (relation) {
             case "implement":
-                result += "<|..";
+                result += " <|.. ";
                 break;
             case "extend":
-                result += "<|--";
+                result += " <|-- ";
                 break;
             case "dependency":
-                result += "<..";
+                result += " <.. ";
                 break;
             case "association":
-                result += "--";
+                result += " -- ";
                 break;
             case "ASSOCIATION":
-                result += "\"*\"--";
+                result += " \"*\"-- ";
         }
         result += rightClass + "\n";
         return result;

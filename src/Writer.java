@@ -26,8 +26,8 @@ public class Writer {
         try {
             File file = new File(fileName);
             file.createNewFile();
-            FileWriter fstream = new FileWriter(file);
-            BufferedWriter wr = new BufferedWriter(fstream);
+            FileWriter stream = new FileWriter(file);
+            BufferedWriter wr = new BufferedWriter(stream);
             wr.write(svg);
             wr.close();
         } catch (IOException e1) {

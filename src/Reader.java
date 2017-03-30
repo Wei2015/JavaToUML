@@ -13,40 +13,35 @@ import com.github.javaparser.ast.type.ClassOrInterfaceType;
 
 public class Reader {
 
+    private ArrayList<File> javaFiles;
     private ArrayList<String> classList;
     private ArrayList<String> interfaceList;
+
 
     //create containers to store relationship, methods, attributes and constructors information.
     private Set<RelationWrapper> relationShips = new HashSet<>();
 
 
     public Reader() {
+        javaFiles = new ArrayList<>();
         classList = new ArrayList<>();
         interfaceList = new ArrayList<>();
     }
 
     /*
-     *This method will take a string parameter for file path and read all java files in the folder
+     *This method will parse class diagram information from java files to a string.
      */
-    public String readDirectory(String path) {
+    public String parseClassDiagram(String path) {
+        //read files from given path
+        readDirectory(path);
 
-        File directory = new File(path);
-        File[] fList = directory.listFiles();
-        ArrayList<File> javaFiles = new ArrayList<>();
         ArrayList<TypeDeclaration> types = new ArrayList<>();
-
-        StringBuilder result = new StringBuilder();
-
-        //Collect all java files,ignore non java files.
-        for (File file : fList) {
-            if (file.isFile() && file.getName().endsWith(".java")) {
-                javaFiles.add(file);
-            }
-        }
         //Obtain class name list and interface name list
         for (File file : javaFiles) {
             getClassType(file, types);
         }
+
+        StringBuilder result = new StringBuilder();
         //iterating each file to extract necessary information, store in result
         for (TypeDeclaration type : types) {
             parseType(type, result);
@@ -64,6 +59,45 @@ public class Reader {
         return result.toString();
 
     }
+    /*
+     * This method will parse sequence diagram information from java files to a string. In progress 03/30/17
+     */
+    public String parseSequenceDiagram(String path) {
+        if (!javaFiles.isEmpty()) {
+            javaFiles.clear();
+        }
+        readDirectory(path);
+
+
+
+        StringBuilder result = new StringBuilder();
+        //convert StringBuilder to String for return
+        result.insert(0, "@startuml\n");
+        result.append("@enduml");
+        return result.toString();
+    }
+
+
+
+    /*
+     * This method will take a string for file path and read all java files.
+     */
+    private void readDirectory(String path) {
+        File directory = new File(path);
+        File[] fList = directory.listFiles();
+        ArrayList<File> javaFiles = new ArrayList<>();
+        ArrayList<TypeDeclaration> types = new ArrayList<>();
+
+        StringBuilder result = new StringBuilder();
+
+        //Collect all java files,ignore non java files.
+        for (File file : fList) {
+            if (file.isFile() && file.getName().endsWith(".java")) {
+                javaFiles.add(file);
+            }
+        }
+    }
+
 
     /*
     * Separate class from interface type

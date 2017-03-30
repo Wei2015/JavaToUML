@@ -68,6 +68,18 @@ public class Reader {
         }
         readDirectory(path);
 
+        ArrayList<TypeDeclaration> types = new ArrayList<>();
+        //Obtain class name list and interface name list
+        for (File file : javaFiles) {
+            getClassType(file, types);
+        }
+
+        //check if there i not Main.java file in the folder, return empty string.
+        if (!classList.contains("Main")){
+            return "";
+        }
+
+
 
 
         StringBuilder result = new StringBuilder();

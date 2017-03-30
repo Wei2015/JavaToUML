@@ -5,16 +5,16 @@ This personal project is to generate a tool to read a series of related java fil
 1.	Project Goal and Requirements
 
  1.1	Agile engineering process: Kanban style
-A weekly Kanban board is maintained to monitor project progress. https://waffle.io/Wei2015/JavaToUML
+ A weekly Kanban board is maintained to monitor project progress. https://waffle.io/Wei2015/JavaToUML
 
  1.2	UML Diagrams requirements
-•	Dependencies & Uses Relationships for Interfaces Only
-•	Class Declarations with optional Extends and Implements 
-•	Only Include Public Methods (ignore private, package and protected scope)
-•	Only Include Private and Public Attributes (ignore package and protected scope)
-•	Java Setters and Getters:  Must Support also Java Style Public Attributes as "setters and getters"
-•	Must Include Types for Attributes, Parameters and Return types on Methods
-•	Classifier vs Attributes Compartment
+	Dependencies & Uses Relationships for Interfaces Only
+	Class Declarations with optional Extends and Implements 
+ Only Include Public Methods (ignore private, package and protected scope)
+ Only Include Private and Public Attributes (ignore package and protected scope)
+ Java Setters and Getters:  Must Support also Java Style Public Attributes as "setters and getters"
+ Must Include Types for Attributes, Parameters and Return types on Methods
+ Classifier vs Attributes Compartment
 
 2.	Tools and API used in the project
 

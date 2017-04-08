@@ -8,8 +8,8 @@ public class SequenceParser {
 
         //Read files from the args[0] into string
 
-       // Reader dir = new Reader();
-        //String result = dir.parseSequenceDiagram(args[0]);
+        Reader dir = new Reader();
+        String result = dir.parseSequenceDiagram(args[0]);
 
         String result = "@startuml\n"
                     + "Alice -> Bob: getName\n"

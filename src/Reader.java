@@ -79,6 +79,8 @@ public class Reader {
             return "";
         }
 
+        //if there is a Main.java, parse this file
+
 
 
 

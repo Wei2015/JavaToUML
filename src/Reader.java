@@ -26,6 +26,7 @@ public class Reader {
         javaFiles = new ArrayList<>();
         classList = new ArrayList<>();
         interfaceList = new ArrayList<>();
+
     }
 
     /*
@@ -35,11 +36,14 @@ public class Reader {
         //read files from given path
         readDirectory(path);
 
+
         ArrayList<TypeDeclaration> types = new ArrayList<>();
         //Obtain class name list and interface name list
         for (File file : javaFiles) {
+
             getClassType(file, types);
         }
+
 
         StringBuilder result = new StringBuilder();
         //iterating each file to extract necessary information, store in result
@@ -61,7 +65,7 @@ public class Reader {
     }
     /*
      * This method will parse sequence diagram information from java files to a string. In progress 03/30/17
-     */
+    */
     public String parseSequenceDiagram(String path) {
         if (!javaFiles.isEmpty()) {
             javaFiles.clear();
@@ -99,10 +103,7 @@ public class Reader {
     private void readDirectory(String path) {
         File directory = new File(path);
         File[] fList = directory.listFiles();
-        ArrayList<File> javaFiles = new ArrayList<>();
-        ArrayList<TypeDeclaration> types = new ArrayList<>();
 
-        StringBuilder result = new StringBuilder();
 
         //Collect all java files,ignore non java files.
         for (File file : fList) {
@@ -118,6 +119,8 @@ public class Reader {
      */
     private void getClassType(File file, ArrayList<TypeDeclaration> types) {
         CompilationUnit cu = new CompilationUnit();
+
+
         //parse file
         try {
             cu = JavaParser.parse(file);

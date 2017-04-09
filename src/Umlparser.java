@@ -5,9 +5,9 @@ public class Umlparser {
     public static void main(String[] args) {
 
 
-        //Read files from the args[0] into string
 
         Reader dir= new Reader();
+
         String result = dir.parseClassDiagram(args[0]);
         System.out.println(result);
 

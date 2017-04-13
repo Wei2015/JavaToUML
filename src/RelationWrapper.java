@@ -2,7 +2,7 @@
  * One object of this class contains relation ship information and override the equals() and hashCode() methods to remove
  * duplicated relationships.
  */
-public class RelationWrapper {
+class RelationWrapper {
 
     private String leftClass;
 
@@ -12,14 +12,14 @@ public class RelationWrapper {
 
 
 
-    public RelationWrapper (String leftClass, String rightClass, String relation) {
+    RelationWrapper (String leftClass, String rightClass, String relation) {
         this.leftClass = leftClass;
         this.rightClass = rightClass;
         this.relation = relation;
 
     }
 
-
+    @Override
     public String toString() {
         String result = leftClass;
         switch (relation) {
@@ -41,7 +41,8 @@ public class RelationWrapper {
         result += rightClass + "\n";
         return result;
     }
-@Override
+
+    @Override
     public boolean equals(Object newWrapper) {
 
         try {
@@ -62,7 +63,8 @@ public class RelationWrapper {
             return false;
         }
     }
-@Override
+
+    @Override
     public int hashCode () {
 
         String newRelation = this.relation.toLowerCase();

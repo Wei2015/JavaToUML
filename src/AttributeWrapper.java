@@ -1,7 +1,7 @@
 /**
- * Created by weiyao on 2/22/17.
+ * This class wrap all information about an attribute in a java file.
  */
-public class AttributeWrapper {
+class AttributeWrapper {
 
     private boolean isPublic;
     private String attributeName;

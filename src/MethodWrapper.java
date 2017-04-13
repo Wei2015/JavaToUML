@@ -2,7 +2,7 @@
  * One object of this class wrap the information of a method.
  */
 import java.util.ArrayList;
-public class MethodWrapper {
+class MethodWrapper {
 
     private String methodName;
 
@@ -10,17 +10,17 @@ public class MethodWrapper {
 
     private ArrayList<String> parameters;
 
-    public MethodWrapper(String name, String type, ArrayList<String> parameters) {
+    MethodWrapper(String name, String type, ArrayList<String> parameters) {
         methodName = name;
         returnType = type;
         this.parameters = parameters;
     }
 
-    public String getMethodName() {
+    String getMethodName() {
         return methodName;
     }
 
-
+    @Override
     public String toString() {
         String result = "+" + methodName + "(";
         for (String s : parameters) {

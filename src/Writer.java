@@ -4,6 +4,7 @@
 
 import net.sourceforge.plantuml.*;
 import java.io.*;
+
 public class Writer {
 
     public static void draw(String source, String fileName) {

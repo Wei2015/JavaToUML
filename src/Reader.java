@@ -16,17 +16,14 @@ public class Reader {
     private ArrayList<File> javaFiles;
     private ArrayList<String> classList;
     private ArrayList<String> interfaceList;
-
-
-    //create containers to store relationship, methods, attributes and constructors information.
-    private Set<RelationWrapper> relationShips = new HashSet<>();
+    private Set<RelationWrapper> relationShips;
 
 
     public Reader() {
         javaFiles = new ArrayList<>();
         classList = new ArrayList<>();
         interfaceList = new ArrayList<>();
-
+        relationShips = new HashSet<>();
     }
 
     /*
@@ -36,14 +33,11 @@ public class Reader {
         //read files from given path
         readDirectory(path);
 
-
+        //Obtain two lists of class names and interface names.
         ArrayList<TypeDeclaration> types = new ArrayList<>();
-        //Obtain class name list and interface name list
         for (File file : javaFiles) {
-
             getClassType(file, types);
         }
-
 
         StringBuilder result = new StringBuilder();
         //iterating each file to extract necessary information, store in result
@@ -51,11 +45,9 @@ public class Reader {
             parseType(type, result);
         }
 
-
         for (RelationWrapper s : relationShips) {
             result.append(s.toString());
         }
-
 
         //convert StringBuilder to String for return
         result.insert(0, "@startuml\n");
@@ -67,13 +59,19 @@ public class Reader {
      * This method will parse sequence diagram information from java files to a string. In progress 03/30/17
     */
     public String parseSequenceDiagram(String path) {
+        //clean up old data in the private attributes.
         if (!javaFiles.isEmpty()) {
             javaFiles.clear();
+            classList.clear();
+            interfaceList.clear();
+            relationShips.clear();
         }
+
+        //read files from given path
         readDirectory(path);
 
+        //Obtain two lists of class names and interface names.
         ArrayList<TypeDeclaration> types = new ArrayList<>();
-        //Obtain class name list and interface name list
         for (File file : javaFiles) {
             getClassType(file, types);
         }
@@ -96,9 +94,8 @@ public class Reader {
     }
 
 
-
     /*
-     * This method will take a string for file path and read all java files.
+     * This method will take a string as path and read all java files.
      */
     private void readDirectory(String path) {
         File directory = new File(path);
@@ -115,11 +112,10 @@ public class Reader {
 
 
     /*
-    * Separate class from interface type
+    * Obtain two lists of class names and interface names.
      */
     private void getClassType(File file, ArrayList<TypeDeclaration> types) {
         CompilationUnit cu = new CompilationUnit();
-
 
         //parse file
         try {
@@ -143,13 +139,11 @@ public class Reader {
 
     
     /*
-     * Extract file content to StringBuilder
+     * Extract one file content to StringBuilder
      */
     private void parseType(TypeDeclaration type, StringBuilder result) {
 
-
         String className = type.getNameAsString();
-
 
         ArrayList<AttributeWrapper> fields = new ArrayList<>();
         ArrayList<MethodWrapper> methods = new ArrayList<>();
@@ -157,7 +151,6 @@ public class Reader {
 
         //add implement or extend to relationships
         addImplementOrExtend(type, className, relationShips);
-
 
         //iterating members
         NodeList<BodyDeclaration> members = type.getMembers();
@@ -255,7 +248,7 @@ public class Reader {
             if (fieldType.contains("<") && fieldType.contains(">")) {
                 varParameterType = fieldType.substring(fieldType.indexOf("<") + 1, fieldType.indexOf(">"));
             }
-            if (classList.contains(fieldType)) {
+            if (classList.contains(fieldType)||interfaceList.contains(fieldType)) {
                 if (v.getType().getArrayLevel() > 0) {
                     relationShips.add(new RelationWrapper(fieldType, className, "ASSOCIATION"));
                 } else {

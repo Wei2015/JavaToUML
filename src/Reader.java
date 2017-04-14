@@ -5,9 +5,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 import com.github.javaparser.*;
+import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.*;
+import com.github.javaparser.ast.stmt.BlockStmt;
+import com.github.javaparser.ast.stmt.Statement;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
 
 
@@ -24,6 +27,7 @@ public class Reader {
         classList = new ArrayList<>();
         interfaceList = new ArrayList<>();
         relationShips = new HashSet<>();
+
     }
 
     /*
@@ -55,44 +59,6 @@ public class Reader {
         return result.toString();
 
     }
-    /*
-     * This method will parse sequence diagram information from java files to a string. In progress 03/30/17
-    */
-    public String parseSequenceDiagram(String path) {
-        //clean up old data in the private attributes.
-        if (!javaFiles.isEmpty()) {
-            javaFiles.clear();
-            classList.clear();
-            interfaceList.clear();
-            relationShips.clear();
-        }
-
-        //read files from given path
-        readDirectory(path);
-
-        //Obtain two lists of class names and interface names.
-        ArrayList<TypeDeclaration> types = new ArrayList<>();
-        for (File file : javaFiles) {
-            getClassType(file, types);
-        }
-
-        //check if there i not Main.java file in the folder, return empty string.
-        if (!classList.contains("Main")){
-            return "";
-        }
-
-        //if there is a Main.java, parse this file
-
-
-
-
-        StringBuilder result = new StringBuilder();
-        //convert StringBuilder to String for return
-        result.insert(0, "@startuml\n");
-        result.append("@enduml");
-        return result.toString();
-    }
-
 
     /*
      * This method will take a string as path and read all java files.
@@ -220,6 +186,23 @@ public class Reader {
             parameters.add(parameter);
         }
 
+        NodeList<Statement> contents = new NodeList<>();
+        Optional<BlockStmt> bodyStmt = m.getBody();
+        if (bodyStmt.isPresent()) {
+
+            try {
+                contents = m.getBody().get().getStatements();
+            } catch (NoSuchElementException e) {
+                System.out.println(e);
+            }
+            for (Statement s : contents) {
+                String[] statement = s.toString().split(" ");
+                if (interfaceList.contains(statement[0]) && !interfaceList.contains(className)) {
+                    relationShips.add(new RelationWrapper(statement[0], className, "dependency"));
+                }
+            }
+        }
+
         methods.add(new MethodWrapper(methodName, returnType, parameters));
     }
 
@@ -243,7 +226,6 @@ public class Reader {
         for (VariableDeclarator v : variables) {
             String fieldType = v.getType().toString(); //variable type
             String varParameterType = ""; //variable parameter type
-
 
             if (fieldType.contains("<") && fieldType.contains(">")) {
                 varParameterType = fieldType.substring(fieldType.indexOf("<") + 1, fieldType.indexOf(">"));

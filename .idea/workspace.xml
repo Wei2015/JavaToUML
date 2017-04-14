@@ -3,14 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="af5f94d6-5ccc-4ee9-9d67-dd6b9d5e3bfc" name="Default" comment="Refractor class names and delete some wrapper classes.">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/MethodWrapper.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/AttributeWrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/MethodWrapper.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ClassWrapper.java" afterPath="$PROJECT_DIR$/src/ClassWrapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JavaToUML.iml" afterPath="$PROJECT_DIR$/JavaToUML.iml" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/src/ReadFiles.java" afterPath="$PROJECT_DIR$/src/Reader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Umlparser.java" afterPath="$PROJECT_DIR$/src/Umlparser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JavaToUML.iml" afterPath="$PROJECT_DIR$/JavaToUML.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ClassWrapper.java" afterPath="$PROJECT_DIR$/src/ClassWrapper.java" />
     </list>
     <list id="9a7cd39a-b87b-436c-8cca-4679c64ff456" name="Rejected commit: Default" comment="Refractor class names and delete some wrapper classes." />
     <ignored path="JavaToUML.iws" />
@@ -40,7 +40,29 @@
     <favorites_list name="JavaToUML" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
+      <file leaf-file-name="Reader.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Reader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1125">
+              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SequenceParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SequenceParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Umlparser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Umlparser.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -51,21 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SequenceParser.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/SequenceParser.java">
+      <file leaf-file-name="SeqReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SeqReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Reader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Reader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3720">
-              <caret line="250" column="83" selection-start-line="250" selection-start-column="83" selection-end-line="250" selection-end-column="83" />
+            <state relative-caret-position="337">
+              <caret line="112" column="46" selection-start-line="112" selection-start-column="16" selection-end-line="112" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,14 +112,16 @@
         <option value="$PROJECT_DIR$/src/ClassWrapper.java" />
         <option value="$PROJECT_DIR$/testCases/A.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/Reader.java" />
         <option value="$PROJECT_DIR$/src/Umlparser.java" />
         <option value="$PROJECT_DIR$/src/AttributeWrapper.java" />
         <option value="$PROJECT_DIR$/src/ConstructorWrapper.java" />
         <option value="$PROJECT_DIR$/src/MethodWrapper.java" />
         <option value="$PROJECT_DIR$/src/RelationWrapper.java" />
-        <option value="$PROJECT_DIR$/src/SequenceParser.java" />
         <option value="$PROJECT_DIR$/src/Writer.java" />
+        <option value="$PROJECT_DIR$/src/SequenceParser.java" />
+        <option value="$PROJECT_DIR$/src/DirExplorer.java" />
+        <option value="$PROJECT_DIR$/src/SeqReader.java" />
+        <option value="$PROJECT_DIR$/src/Reader.java" />
       </list>
     </option>
   </component>
@@ -149,9 +163,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scratches">
-        <subPane />
-      </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -190,7 +202,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches">
+        <subPane />
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -209,7 +223,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Umlparser" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;$PROJECT_DIR$/testCases/uml-parser-test-5&quot; &quot;$PROJECT_DIR$/testCases/test5.svg&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;$PROJECT_DIR$/testCases/uml-parser-test-1/&quot; &quot;$PROJECT_DIR$/testCases/testResult/test1.svg&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -621,7 +635,8 @@
       <workItem from="1487451091899" duration="157000" />
       <workItem from="1491719911833" duration="133000" />
       <workItem from="1491720055463" duration="1270000" />
-      <workItem from="1492107567359" duration="3053000" />
+      <workItem from="1492107567359" duration="11289000" />
+      <workItem from="1492146416072" duration="4579000" />
     </task>
     <task id="LOCAL-00001" summary="Add files">
       <created>1487266548823</created>
@@ -641,7 +656,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25634000" />
+    <option name="totallyTimeSpent" value="38449000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -654,18 +669,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="23" width="1613" height="1027" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987687" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.4977317" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5022683" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.4977317" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24705882" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24705882" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.4977317" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22052401" sideWeight="0.49513933" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -726,6 +741,7 @@
         <state relative-caret-position="105">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -754,6 +770,7 @@
         <state relative-caret-position="105">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -782,6 +799,7 @@
         <state relative-caret-position="105">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -810,6 +828,7 @@
         <state relative-caret-position="150">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -840,6 +859,7 @@
         <state relative-caret-position="150">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -937,23 +957,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Reader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3720">
-          <caret line="250" column="83" selection-start-line="250" selection-start-column="83" selection-end-line="250" selection-end-column="83" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3135">
           <caret line="234" column="18" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
           <folding>
-            <element signature="e#10065#10066#0" expanded="true" />
-            <element signature="e#10148#10149#0" expanded="true" />
+            <element signature="e#10065#10066#0" expanded="false" />
+            <element signature="e#10148#10149#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -994,20 +1004,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestRelation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestRelation.java" />
     <entry file="file://$PROJECT_DIR$/src/Writer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DirExplorer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding>
+            <element signature="e#489#490#0" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SequenceParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeqReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="112" column="46" selection-start-line="112" selection-start-column="16" selection-end-line="112" selection-end-column="46" />
+          <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -1021,11 +1053,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SequenceParser.java">
+    <entry file="file://$PROJECT_DIR$/src/Reader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="1125">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

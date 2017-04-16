@@ -18,6 +18,5 @@
     </orderEntry>
     <orderEntry type="library" name="plantuml" level="project" />
     <orderEntry type="library" name="javaparser-core-3.1.0-beta.2" level="project" />
-    <orderEntry type="library" name="aspectj-1.8.10" level="project" />
   </component>
 </module>

@@ -5,6 +5,7 @@ Design Document for JavaToUML project
 1.	Project Goal and Requirements
 1.1.	Agile engineering process: Kanban style
 A weekly Kanban board is maintained to monitor project progress. https://waffle.io/Wei2015/JavaToUML
+
 1.2.	UML Parser requirements
 •	Dependencies & Uses Relationships for Interfaces Only
 •	Class Declarations with optional Extends and Implements 
@@ -29,6 +30,7 @@ All string inputs for plantuml must start with @startuml and end with @enduml. I
 3.1.	Build jar file in Intellij:
 •	File > Project Settings > Artifacts > Add Name: JavaToUML.jar, Type JAR, > Apply and OK
 •	Build > Build Artifacts
+
 3.2.	Run command line execution on Amazon EC2 
 •	Update Java to 1.8 on EC2
 •	Install graphviz on EC2 for plantUML library to be used. http://www.graphviz.org/Download_linux_fedora.php
